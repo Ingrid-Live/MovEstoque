@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transf. Estoque</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            color: #2a9d8f;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #264653;
+            font-weight: bold;
+        }
+        input[type="text"], select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #e76f51;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #d64d2e;
+        }
+    </style>
+    <script>
+        function setDateTime() {
+            var now = new Date();
+            var formattedDateTime = now.toISOString().slice(0, 19).replace("T", " ");
+            document.getElementById('datetime').value = formattedDateTime;
+        }
+    </script>
+</head>
+<body onload="setDateTime()">
+    <div class="container">
+        <h1>Transferência de Estoque</h1>
+        <form action="/submit" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            
+            <label for="cartao">Cartão:</label>
+            <input type="text" id="cartao" name="cartao" required>
+
+            <label for="local_origem">Local Origem:</label>
+            <select id="local_origem" name="local_origem" required>
+                <option value="PAV01">PAV01</option>
+                <option value="PAV02">PAV02</option>
+                <option value="PAV03">PAV03</option>
+                <option value="PAV04">PAV04</option>
+                <option value="PAV05">PAV05</option>
+                <option value="PAV06">PAV06</option>
+            </select>
+            
+            <label for="local_destino">Local Destino:</label>
+            <select id="local_destino" name="local_destino" required>
+                <option value="PAV01">PAV01</option>
+                <option value="PAV02">PAV02</option>
+                <option value="PAV03">PAV03</option>
+                <option value="PAV04">PAV04</option>
+                <option value="PAV05">PAV05</option>
+                <option value="PAV06">PAV06</option>
+            </select>
+            
+            <input type="hidden" id="datetime" name="datetime">
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
